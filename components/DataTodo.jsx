@@ -33,33 +33,43 @@ const DataTodo = ({ data }) => {
             <th>Kegiatan</th>
             <th>Hari</th>
             <th>Jam</th>
+            <th>Detail</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((tds, idx) => (
+          {data.map((tdsEmbedded, idx) => (
             <tr key={idx}>
-              <td>{tds.id}</td>
-              <td>{tds.nama}</td>
-              <td>{tds.kegiatan}</td>
-              <td>{tds.hari}</td>
-              <td>{tds.jam}</td>
+              <td>{tdsEmbedded.id}</td>
+              <td>{tdsEmbedded.nama}</td>
+              <td>{tdsEmbedded.kegiatan}</td>
+              <td>{tdsEmbedded.hari}</td>
+              <td>{tdsEmbedded.jam}</td>
+              {tdsEmbedded.detail.map((tdsEmbedded, idx) => (
+                <td key={idx}>{tdsEmbedded.deskripsi}</td>
+              ))}
 
               <td>
                 <div className="d-flex justify-content gap-2 ">
                   <button className="btn btn-success btn-sm">
                     <Link
-                      href={`/updatetodo?id=${tds.id}
-                                        &nama=${tds.nama}&kegiatan=${tds.kegiatan}&hari=${tds.hari}
-                                        &jam=${tds.jam}
+                      href={`/updatetodo?id=${tdsEmbedded.id}
+                                        &nama=${tdsEmbedded.nama}&kegiatan=${tdsEmbedded.kegiatan}&hari=${tdsEmbedded.hari}
+                                        &jam=${tdsEmbedded.jam}
                                         `}
                     >
                       <i class="bi bi-gear-fill"></i>
                     </Link>
                   </button>
 
+                  <button className="btn btn-success btn-sm">
+                    <Link href={`/datadetail`}>
+                      <i class="bi bi-book"></i>
+                    </Link>
+                  </button>
+
                   <button
                     className="btn btn-danger btn-sm"
-                    value={tds.id}
+                    value={tdsEmbedded.id}
                     onClick={(e) => hapusTodo(e.target.value)}
                   >
                     <i class="bi bi-trash3-fill"></i>
