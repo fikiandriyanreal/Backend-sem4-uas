@@ -1,12 +1,13 @@
+import Link from "next/link";
+import axios from "axios";
 const DataDetail = ({ data }) => {
   return (
     <div className="container">
-      <table className="table table-striped table-hover">
+      <table className="table table-striped table-hover ">
         <thead>
           <tr>
             <th>ID</th>
             <th>Deskripsi</th>
-            <th>Detail</th>
           </tr>
         </thead>
         <tbody>
@@ -16,6 +17,17 @@ const DataDetail = ({ data }) => {
               {tdsEmbedded.detail.map((tdsEmbedded, idx) => (
                 <td key={idx}>{tdsEmbedded.deskripsi}</td>
               ))}
+              <td>
+                <button className="btn btn-success btn-sm">
+                  <Link
+                    href={`/updatedetail?id=${tdsEmbedded.id}
+                                       &deskripsi=${tdsEmbedded.deskripsi}
+                                        `}
+                  >
+                    <i className="text-white">Tambah Deskripsi</i>
+                  </Link>
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

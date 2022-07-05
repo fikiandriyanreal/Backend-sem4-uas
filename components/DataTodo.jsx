@@ -33,7 +33,7 @@ const DataTodo = ({ data }) => {
             <th>Kegiatan</th>
             <th>Hari</th>
             <th>Jam</th>
-            <th>Detail</th>
+            <th>Konfigurasi</th>
           </tr>
         </thead>
         <tbody>
@@ -44,9 +44,6 @@ const DataTodo = ({ data }) => {
               <td>{tdsEmbedded.kegiatan}</td>
               <td>{tdsEmbedded.hari}</td>
               <td>{tdsEmbedded.jam}</td>
-              {tdsEmbedded.detail.map((tdsEmbedded, idx) => (
-                <td key={idx}>{tdsEmbedded.deskripsi}</td>
-              ))}
 
               <td>
                 <div className="d-flex justify-content gap-2 ">
@@ -61,18 +58,18 @@ const DataTodo = ({ data }) => {
                     </Link>
                   </button>
 
-                  <button className="btn btn-success btn-sm">
-                    <Link href={`/datadetail`}>
-                      <i class="bi bi-book"></i>
-                    </Link>
-                  </button>
-
                   <button
                     className="btn btn-danger btn-sm"
                     value={tdsEmbedded.id}
                     onClick={(e) => hapusTodo(e.target.value)}
                   >
                     <i class="bi bi-trash3-fill"></i>
+                  </button>
+
+                  <button className="btn btn-success btn-sm text-white">
+                    <Link href={`/datadetail`}>
+                      <i className="text-white">Detail</i>
+                    </Link>
                   </button>
                 </div>
               </td>
