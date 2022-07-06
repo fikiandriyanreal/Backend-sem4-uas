@@ -7,6 +7,7 @@ const DataDetail = ({ data }) => {
         <thead>
           <tr>
             <th>ID</th>
+            <th>Kegiatan</th>
             <th>Deskripsi</th>
           </tr>
         </thead>
@@ -14,6 +15,7 @@ const DataDetail = ({ data }) => {
           {data.map((tdsEmbedded, idx) => (
             <tr key={idx}>
               <td>{tdsEmbedded.id}</td>
+              <td>{tdsEmbedded.kegiatan}</td>
               {tdsEmbedded.detail.map((tdsEmbedded, idx) => (
                 <td key={idx}>{tdsEmbedded.deskripsi}</td>
               ))}
