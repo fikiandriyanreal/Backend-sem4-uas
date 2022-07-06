@@ -1,17 +1,18 @@
-import DataUser from "../components/user/DataUser";
-import LayoutUser from "../components/user/LayoutUser";
-export default function Home({ data }) {
+import DataTodo from "../../components/admin/DataTodo";
+import Layout from "../../components/admin/Layout";
+import TodoById from "../../components/admin/TodoById";
+
+const dataTodo = ({ data }) => {
   {
     Array.isArray(data) ? (data = data) : (data = [data]);
   }
   return (
-    <div>
-      <LayoutUser>
-        <DataUser data={data} />
-      </LayoutUser>
-    </div>
+    <Layout>
+      <TodoById />
+      <DataTodo data={data} />
+    </Layout>
   );
-}
+};
 
 export async function getServerSideProps({ query }) {
   const id = query.id;
@@ -26,3 +27,5 @@ export async function getServerSideProps({ query }) {
 
   return { props: { data } };
 }
+
+export default dataTodo;

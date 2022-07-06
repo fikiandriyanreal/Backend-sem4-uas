@@ -1,6 +1,6 @@
-import DataUser from "../components/user/DataUser";
-import LayoutUser from "../components/user/LayoutUser";
-export default function Home({ data }) {
+import DataUser from "../../components/user/DataUser";
+import LayoutUser from "../../components/user/LayoutUser";
+export default function Datauser({ data }) {
   {
     Array.isArray(data) ? (data = data) : (data = [data]);
   }
